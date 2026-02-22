@@ -985,9 +985,13 @@ std::any CScrollingLayout::layoutMessage(SLayoutMessageHeader header, std::strin
         if (ARGS[1] == "active") {
             // fit the current column to 1.F
             const auto WDATA    = dataFor(Desktop::focusState()->window());
+
+            if(!WDATA)
+                return {};
+
             const auto WORKDATA = dataFor(Desktop::focusState()->window()->m_workspace);
 
-            if (!WDATA || !WORKDATA || WORKDATA->columns.size() == 0)
+            if (!WORKDATA || WORKDATA->columns.size() == 0)
                 return {};
 
             const auto USABLE = usableAreaFor(WORKDATA->workspace->m_monitor.lock());
