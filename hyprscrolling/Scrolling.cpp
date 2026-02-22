@@ -1009,6 +1009,9 @@ std::any CScrollingLayout::layoutMessage(SLayoutMessageHeader header, std::strin
             WDATA->column->workspace->recalculate();
         } else if (ARGS[1] == "all") {
             // fit all columns on screen
+            if(!dataFor(Desktop::focusState()->window()))
+                return {};
+
             const auto WDATA = dataFor(Desktop::focusState()->window()->m_workspace);
 
             if (!WDATA || WDATA->columns.size() == 0)
@@ -1022,6 +1025,9 @@ std::any CScrollingLayout::layoutMessage(SLayoutMessageHeader header, std::strin
             WDATA->recalculate();
         } else if (ARGS[1] == "toend") {
             // fit all columns on screen that start from the current and end on the last
+            if(!dataFor(Desktop::focusState()->window()))
+                return {};
+
             const auto WDATA = dataFor(Desktop::focusState()->window()->m_workspace);
 
             if (!WDATA || WDATA->columns.size() == 0)
@@ -1054,6 +1060,9 @@ std::any CScrollingLayout::layoutMessage(SLayoutMessageHeader header, std::strin
             WDATA->recalculate();
         } else if (ARGS[1] == "tobeg") {
             // fit all columns on screen that start from the current and end on the last
+            if(!dataFor(Desktop::focusState()->window()))
+                return {};
+
             const auto WDATA = dataFor(Desktop::focusState()->window()->m_workspace);
 
             if (!WDATA || WDATA->columns.size() == 0)
@@ -1081,6 +1090,9 @@ std::any CScrollingLayout::layoutMessage(SLayoutMessageHeader header, std::strin
             WDATA->recalculate();
         } else if (ARGS[1] == "visible") {
             // fit all columns on screen that start from the current and end on the last
+            if(!dataFor(Desktop::focusState()->window()))
+                return {};
+
             const auto WDATA = dataFor(Desktop::focusState()->window()->m_workspace);
 
             if (!WDATA || WDATA->columns.size() == 0)
